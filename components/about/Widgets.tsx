@@ -9,9 +9,9 @@ const Widgets = () => {
             <section>
                 <h3 className="text-foreground text-sm mb-4">\\ Certifications</h3>
                 <div className="flex flex-wrap gap-4">
-                    {Array(5).fill(0).map(()=>{
-                        return(
-                            <Image src='/assets/cert.png' alt="cert" width={50} height={50}/>
+                    {Array(5).fill(0).map(() => {
+                        return (
+                            <Image src='/assets/cert.png' alt="cert" width={50} height={50} />
                         )
                     })}
                 </div>
@@ -33,21 +33,22 @@ const Widgets = () => {
             <section>
                 <h3 className="text-foreground text-sm mb-4">\\ Interests</h3>
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="p-3 border border-foreground/20 rounded bg-dark-50/20 flex items-center justify-between">
-                        <span className="text-xs text-foreground">L1/L2 Audits</span>
-                        <Layers size={16} className="text-foreground/50" />
+                    <div className="interest-border flex items-center justify-between px-2 py-2">
+                        <span className="text-sm text-white">
+                            L1/L2 Audits</span>
+                            <Image src='/assets/interests/1.svg' alt="l1/l2" width={20} height={20}/>
                     </div>
-                    <div className="p-3 border border-foreground/20 rounded bg-dark-50/20 flex items-center justify-between">
-                        <span className="text-xs text-foreground">DeFi Protocols</span>
-                        <Box size={16} className="text-foreground/50" />
+                    <div className="interest-border flex items-center justify-between px-2 py-2">
+                        <span className="text-sm text-white">DeFi Protocols</span>
+                            <Image src='/assets/interests/2.svg' alt="l1/l2" width={20} height={20}/>
                     </div>
-                    <div className="p-3 border border-foreground/20 rounded bg-dark-50/20 flex items-center justify-between">
-                        <span className="text-xs text-foreground">Bridges</span>
-                        <Globe size={16} className="text-foreground/50" />
+                    <div className="interest-border flex items-center justify-between px-2 py-2">
+                        <span className="text-sm text-white">Bridges</span>
+                            <Image src='/assets/interests/3.svg' alt="l1/l2" width={20} height={20}/>
                     </div>
-                    <div className="p-3 border border-foreground/20 rounded bg-dark-50/20 flex items-center justify-between">
-                        <span className="text-xs text-foreground">Wallets</span>
-                        <Wallet size={16} className="text-foreground/50" />
+                    <div className="interest-border flex items-center justify-between px-2 py-2">
+                        <span className="text-sm text-white">Wallets</span>
+                            <Image src='/assets/interests/4.svg' alt="l1/l2" width={20} height={20}/>
                     </div>
                 </div>
             </section>

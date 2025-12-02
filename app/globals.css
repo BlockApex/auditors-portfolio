@@ -160,3 +160,9 @@ button {
   );
   border-top: 0.79px solid #2b7fff4d;
 }
+
+.interest-border {
+  background: linear-gradient(0deg, transparent, transparent),
+    linear-gradient(180deg, #0b0b0b 58.17%, #00152b 100%);
+  border-bottom: 1px solid #007dff;
+}
