@@ -1,26 +1,153 @@
 @import "tailwindcss";
 
+/* 🌈 Global design tokens (CSS variables) */
 :root {
+  /* 🎨 Color palette */
+  --primary: #6c79e2;
+  --secondary: #f6754f;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #0ea5e9;
+  --foreground: #90a1b9;
+  --dark: #314158;
+  --dark-50: #2d3c59;
+  --black: black;
   --background: #ffffff;
-  --foreground: #171717;
+
+  /* 🖋️ Font */
+  --font-fira-code: var(--font-fira-code), monospace;
 }
 
+/* ⚙️ Tailwind theme bridge */
 @theme inline {
+  /* 🎨 Colors */
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-dark: var(--dark);
+  --color-dark-50: var(--dark-50);
+  --color-black: var(--black);
+
+  /* 🖋️ Font Bridge to Tailwind */
+  --font-mono: var(--font-fira-code);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Prevent font auto scaling */
+html,
+body {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* 🌐 Base Styles */
+body {
+  background-color: var(--background);
+  color: var(--color-dark);
+  font-family: var(--font-fira-code);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply Fira Code everywhere */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+code,
+pre,
+button,
+input,
+textarea,
+select,
+.font-body {
+  font-family: var(--font-fira-code);
+}
+
+/* Fix iOS zoom on input focus */
+input,
+textarea,
+select {
+  font-size: 16px !important;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hide scrollbar utilities */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animations preserved */
+@keyframes marquee-smooth {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes slow-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.slow-spin {
+  animation: slow-spin 3s linear infinite;
+}
+
+.root-bg {
+  background-image: url("../public/assets/root_bg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.active_link {
+  border-bottom: 3px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    269.59deg,
+    #191819 -2.36%,
+    #007dff 16.99%,
+    #ff633f 39.11%,
+    #db7bff 78.37%,
+    #f1f55f 94.83%,
+    #ffffff 108.23%
+  );
+}
+
+.text-gradient {
+  background: linear-gradient(
+    90.79deg,
+    #f1f55f -9.46%,
+    #db7bff 15.48%,
+    #007dff 43.9%,
+    #2d2d2d 90.29%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
