@@ -20,14 +20,14 @@ const Sidebar = () => {
           ) : (
             <ChevronRight size={16} className="mr-2" />
           )}
-          <span className="text-sm">personal-info</span>
+          <span className="text-sm text-white">personal-info</span>
         </button>
         
         {isPersonalInfoOpen && (
           <div className="px-4 py-2 space-y-2">
-            <div className="flex items-center text-foreground/80 hover:text-secondary cursor-pointer transition-colors">
-              <ChevronRight size={16} className="mr-2 text-secondary" />
-              <Folder size={16} className="mr-2 text-secondary" />
+            <div className="flex items-center text-foreground cursor-pointer transition-colors">
+              <ChevronRight size={16} className="mr-2 text-foreground" />
+              <Folder size={16} className="mr-2 text-[#FF637E]" fill="#FF637E" />
               <span className="text-sm">About</span>
             </div>
             {/* Add more folders if needed */}
@@ -39,7 +39,7 @@ const Sidebar = () => {
       <div className="border-b border-foreground/50">
         <button
           onClick={() => setIsContactsOpen(!isContactsOpen)}
-          className="w-full flex items-center px-4 py-2 text-foreground hover:text-white transition-colors"
+          className={`w-full flex items-center px-4 py-2 ${isContactsOpen ? 'text-white':'text-foreground'} hover:text-white transition-colors`}
         >
           {isContactsOpen ? (
             <ChevronDown size={16} className="mr-2" />

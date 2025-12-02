@@ -151,3 +151,12 @@ button {
   background-clip: text;
   text-fill-color: transparent;
 }
+
+.tool-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(43, 127, 255, 0.2) 0%,
+    rgba(0, 184, 219, 0.1) 100%
+  );
+  border-top: 0.79px solid #2b7fff4d;
+}

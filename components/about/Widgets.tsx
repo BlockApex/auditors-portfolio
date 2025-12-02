@@ -1,4 +1,5 @@
 import { Terminal, Shield, Cpu, Zap, Box, Layers, Wallet, Globe } from "lucide-react";
+import Image from "next/image";
 
 const Widgets = () => {
     return (
@@ -8,19 +9,11 @@ const Widgets = () => {
             <section>
                 <h3 className="text-foreground text-sm mb-4">\\ Certifications</h3>
                 <div className="flex flex-wrap gap-4">
-                    {/* Placeholders for certification logos using Lucide icons or colored boxes */}
-                    <div className="w-10 h-10 rounded border border-success/50 flex items-center justify-center text-success bg-success/10" title="CISSP">
-                        <Shield size={20} />
-                    </div>
-                    <div className="w-10 h-10 rounded border border-warning/50 flex items-center justify-center text-warning bg-warning/10" title="OSCP">
-                        <Terminal size={20} />
-                    </div>
-                    <div className="w-10 h-10 rounded border border-secondary/50 flex items-center justify-center text-secondary bg-secondary/10" title="OSFP">
-                        <Cpu size={20} />
-                    </div>
-                    <div className="w-10 h-10 rounded border border-danger/50 flex items-center justify-center text-danger bg-danger/10" title="CEH">
-                        <Zap size={20} />
-                    </div>
+                    {Array(5).fill(0).map(()=>{
+                        return(
+                            <Image src='/assets/cert.png' alt="cert" width={50} height={50}/>
+                        )
+                    })}
                 </div>
             </section>
 
@@ -29,7 +22,7 @@ const Widgets = () => {
                 <h3 className="text-foreground text-sm mb-4">\\ Tools</h3>
                 <div className="flex flex-wrap gap-2">
                     {["Slither", "Echidna", "Foundry", "Halmos", "Manticore", "Mythril", "Certora", "Aderyn"].map((tool) => (
-                        <span key={tool} className="px-3 py-1 bg-info/10 text-info text-xs rounded border border-info/20">
+                        <span key={tool} className="tool-bg px-2 py-1 text-white rounded-lg">
                             {tool}
                         </span>
                     ))}
