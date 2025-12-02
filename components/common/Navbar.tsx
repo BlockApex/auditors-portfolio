@@ -36,7 +36,7 @@ const Navbar = () => {
         <span className="w-4 h-4 rounded-full bg-[#05DF72]/20 flex items-center justify-center">
           <span className="w-3 h-3 rounded-full bg-[#05DF72] block"></span>
         </span>
-        <p className="text-foreground text-base">_contact-me</p>
+        <Link href='/contact' className="text-foreground text-base">_contact-me</Link>
       </section>
     </nav>
   );
