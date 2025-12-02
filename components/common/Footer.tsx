@@ -3,7 +3,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className='w-full flex items-center justify-between border-t border-foreground/50 absolute bottom-0'>
+        <div className='w-full flex items-center justify-between border-t border-foreground/50 shrink-0'>
             <section className='flex items-center'>
                 <div className='border-r border-foreground/50'>
                     <p className='text-foreground text-base px-4 py-2'>find me in:</p>

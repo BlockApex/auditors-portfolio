@@ -9,10 +9,12 @@ interface AppLayoutProps {
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     return (
-        <main className='w-full h-screen  relative overflow-hidden root-bg p-8'>
-            <div className='w-full h-full border border-foreground/50 rounded-sm relative'>
+        <main className='w-full h-screen relative overflow-hidden root-bg p-8'>
+            <div className='w-full h-full border border-foreground/50 rounded-sm relative flex flex-col  backdrop-blur-sm'>
                 <Navbar />
-                {children}
+                <div className="flex-1 overflow-hidden relative">
+                    {children}
+                </div>
                 <Footer />
             </div>
         </main>

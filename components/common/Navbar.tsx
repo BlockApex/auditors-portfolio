@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <nav className="w-full flex items-center justify-between border-b border-foreground/50">
       <section className="flex items-center">
-        <p className="text-foreground text-base border-r border-foreground/50 px-6 py-2">
+        <p className="text-foreground text-base border-r border-foreground/50 px-6 py-2 min-w-[250px]">
           moazzam-arif
         </p>
 
