@@ -26,7 +26,7 @@ const FeaturedClients = () => {
                 alt="Client"
                 width={100}
                 height={40}
-                className="object-contain opacity-70 hover:opacity-100 transition-opacity"
+                className="object-contain opacity-70 hover:opacity-100 transition-opacity min-w-[70px] md:min-w-auto"
               />
             </div>
           ))}

@@ -52,12 +52,12 @@ const ProjectsPage = () => {
   ];
 
   return (
-    <div className="flex h-full w-full">
+    <div className="flex flex-col xl:flex-row h-full w-full">
       {/* Sidebar */}
       <ProjectSidebar />
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col h-full min-w-0">
+      <main className="flex-1 flex flex-col h-full min-w-0 overflow-hidden">
         {/* Top Tab Bar */}
         <div className="flex border-b border-foreground/50 shrink-0">
           <div className="px-4 py-2 border-r border-foreground/50 text-foreground text-sm flex items-center">

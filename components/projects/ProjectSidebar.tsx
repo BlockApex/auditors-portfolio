@@ -26,7 +26,7 @@ const ProjectSidebar = () => {
   };
 
   return (
-    <aside className="w-full md:w-64 border-r border-foreground/50 flex flex-col h-full shrink-0 bg-[#0B0B0B]">
+    <aside className="w-full xl:w-64 border-b xl:border-b-0 xl:border-r border-foreground/50 flex flex-col h-auto xl:h-full shrink-0">
       {/* Header */}
       <div className="border-b border-foreground/50">
         <button
@@ -52,11 +52,10 @@ const ProjectSidebar = () => {
               >
                 {/* Checkbox */}
                 <div
-                  className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
-                    filters[chain.name as keyof typeof filters]
+                  className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${filters[chain.name as keyof typeof filters]
                       ? "bg-foreground/20 border-foreground"
                       : "border-foreground/50"
-                  }`}
+                    }`}
                 >
                   {filters[chain.name as keyof typeof filters] && (
                     <span className="text-xs text-white">✓</span>

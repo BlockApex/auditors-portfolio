@@ -15,7 +15,7 @@ const ContactSidebar = () => {
     ];
 
     return (
-        <aside className="w-full md:w-64 border-r border-foreground/50 flex flex-col h-full shrink-0">
+        <aside className="w-full xl:w-64 border-b xl:border-b-0 xl:border-r border-foreground/50 flex flex-col h-auto xl:h-full shrink-0">
             {/* Contacts Section */}
             <div className="border-b border-foreground/50">
                 <button

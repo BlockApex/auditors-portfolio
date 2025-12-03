@@ -3,13 +3,13 @@ import Image from "next/image";
 
 const Widgets = () => {
     return (
-        <div className="h-full overflow-y-auto p-6 space-y-8 hide-scrollbar">
+        <div className="h-auto xl:h-full overflow-y-auto p-6 space-y-8 hide-scrollbar">
 
             {/* Certifications */}
             <section>
                 <h3 className="text-foreground text-sm mb-4">\\ Certifications</h3>
                 <div className="flex flex-wrap gap-4">
-                    {Array(5).fill(0).map((item,i) => {
+                    {Array(5).fill(0).map((item, i) => {
                         return (
                             <Image key={i} src='/assets/cert.png' alt="cert" width={50} height={50} />
                         )
@@ -36,19 +36,19 @@ const Widgets = () => {
                     <div className="interest-border flex items-center justify-between px-2 py-2">
                         <span className="text-sm text-white">
                             L1/L2 Audits</span>
-                            <Image src='/assets/interests/1.svg' alt="l1/l2" width={20} height={20}/>
+                        <Image src='/assets/interests/1.svg' alt="l1/l2" width={20} height={20} />
                     </div>
                     <div className="interest-border flex items-center justify-between px-2 py-2">
                         <span className="text-sm text-white">DeFi Protocols</span>
-                            <Image src='/assets/interests/2.svg' alt="l1/l2" width={20} height={20}/>
+                        <Image src='/assets/interests/2.svg' alt="l1/l2" width={20} height={20} />
                     </div>
                     <div className="interest-border flex items-center justify-between px-2 py-2">
                         <span className="text-sm text-white">Bridges</span>
-                            <Image src='/assets/interests/3.svg' alt="l1/l2" width={20} height={20}/>
+                        <Image src='/assets/interests/3.svg' alt="l1/l2" width={20} height={20} />
                     </div>
                     <div className="interest-border flex items-center justify-between px-2 py-2">
                         <span className="text-sm text-white">Wallets</span>
-                            <Image src='/assets/interests/4.svg' alt="l1/l2" width={20} height={20}/>
+                        <Image src='/assets/interests/4.svg' alt="l1/l2" width={20} height={20} />
                     </div>
                 </div>
             </section>

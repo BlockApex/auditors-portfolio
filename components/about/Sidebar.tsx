@@ -8,7 +8,7 @@ const Sidebar = () => {
   const [isContactsOpen, setIsContactsOpen] = useState(true);
 
   return (
-    <aside className="w-full md:w-64 border-r border-foreground/50 flex flex-col h-full">
+    <aside className="w-full xl:w-64 border-b xl:border-b-0 xl:border-r border-foreground/50 flex flex-col h-auto xl:h-full shrink-0">
       {/* Personal Info Section */}
       <div className="border-b border-foreground/50">
         <button
@@ -22,7 +22,7 @@ const Sidebar = () => {
           )}
           <span className="text-sm text-white">personal-info</span>
         </button>
-        
+
         {isPersonalInfoOpen && (
           <div className="px-4 py-2 space-y-2">
             <div className="flex items-center text-foreground cursor-pointer transition-colors">
@@ -39,7 +39,7 @@ const Sidebar = () => {
       <div className="border-b border-foreground/50">
         <button
           onClick={() => setIsContactsOpen(!isContactsOpen)}
-          className={`w-full flex items-center px-4 py-2 ${isContactsOpen ? 'text-white':'text-foreground'} hover:text-white transition-colors`}
+          className={`w-full flex items-center px-4 py-2 ${isContactsOpen ? 'text-white' : 'text-foreground'} hover:text-white transition-colors`}
         >
           {isContactsOpen ? (
             <ChevronDown size={16} className="mr-2" />
