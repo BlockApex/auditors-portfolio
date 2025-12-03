@@ -9,9 +9,9 @@ const Widgets = () => {
             <section>
                 <h3 className="text-foreground text-sm mb-4">\\ Certifications</h3>
                 <div className="flex flex-wrap gap-4">
-                    {Array(5).fill(0).map(() => {
+                    {Array(5).fill(0).map((item,i) => {
                         return (
-                            <Image src='/assets/cert.png' alt="cert" width={50} height={50} />
+                            <Image key={i} src='/assets/cert.png' alt="cert" width={50} height={50} />
                         )
                     })}
                 </div>
