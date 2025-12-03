@@ -8,14 +8,14 @@ import VulnerabilityList from "@/components/vulnerabilities/VulnerabilityList";
 
 const VulnerabilitiesPage = () => {
   return (
-    <div className="flex h-full w-full">
+    <div className="flex flex-col xl:flex-row h-full w-full overflow-y-auto xl:overflow-hidden overflow-x-hidden">
       {/* Sidebar */}
       <VulnerabilitySidebar />
 
       {/* Main Content Area */}
-      <main className="flex-1 flex h-full min-w-0">
+      <main className="flex-1 flex flex-col xl:flex-row h-auto xl:h-full min-w-0">
         {/* Dashboard Section (Stats + Chart) */}
-        <section className="flex-1 flex flex-col border-r border-foreground/50 h-full min-w-[400px]">
+        <section className="flex-1 flex flex-col border-r-0 xl:border-r border-foreground/50 h-auto xl:h-full min-w-0 xl:min-w-[400px]">
           {/* Header */}
           <div className="flex border-b border-foreground/50 shrink-0">
             <div className="px-4 py-2 border-r border-foreground/50 text-foreground text-sm flex items-center">
@@ -24,7 +24,7 @@ const VulnerabilitiesPage = () => {
             </div>
           </div>
 
-          <div className="p-6 overflow-y-auto hide-scrollbar flex-1">
+          <div className="p-6 overflow-visible xl:overflow-y-auto hide-scrollbar flex-1">
             {/* Stats Cards */}
             <StatsCards />
             {/* Chart Section */}
@@ -44,7 +44,7 @@ const VulnerabilitiesPage = () => {
         </section>
 
         {/* List Section */}
-        <section className="w-[700px] hidden xl:flex flex-col h-full">
+        <section className="w-full xl:w-[700px] flex flex-col h-auto xl:h-full border-t xl:border-t-0 border-foreground/50">
           <VulnerabilityList />
         </section>
       </main>
