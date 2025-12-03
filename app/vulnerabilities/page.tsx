@@ -44,7 +44,7 @@ const VulnerabilitiesPage = () => {
         </section>
 
         {/* List Section */}
-        <section className="w-[700px] hidden xl:flex flex-col h-full bg-dark/30">
+        <section className="w-[700px] hidden xl:flex flex-col h-full">
           <VulnerabilityList />
         </section>
       </main>
