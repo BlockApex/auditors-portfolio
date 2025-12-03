@@ -18,21 +18,21 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex items-center justify-between border-b border-foreground/50 relative z-50">
-      <section className="flex items-center w-full lg:w-auto justify-between lg:justify-start">
+      <section className="flex items-center w-full xl:w-auto justify-between xl:justify-start">
         <p className="text-foreground text-base border-r border-foreground/50 px-6 py-2 min-w-[250px]">
           moazzam-arif
         </p>
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden px-6 py-2 text-foreground"
+          className="xl:hidden px-6 py-2 text-foreground"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <XIcon /> : <Menu />}
         </button>
 
         {/* Desktop Links */}
-        <div className="hidden lg:flex">
+        <div className="hidden xl:flex">
           {links.map((link) => (
             <Link
               key={link.name}
@@ -47,7 +47,7 @@ const Navbar = () => {
       </section>
 
       {/* Desktop Contact Link */}
-      <section className="hidden lg:flex items-center border-s border-foreground/50 px-6 py-2 gap-3">
+      <section className="hidden xl:flex items-center border-s border-foreground/50 px-6 py-2 gap-3">
         <span className="w-4 h-4 rounded-full bg-[#05DF72]/20 flex items-center justify-center">
           <span className="w-3 h-3 rounded-full bg-[#05DF72] block"></span>
         </span>
@@ -56,7 +56,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-dark border-b border-foreground/50 flex flex-col lg:hidden">
+        <div className="absolute top-full left-0 w-full bg-dark border-b border-foreground/50 flex flex-col xl:hidden">
           {links.map((link) => (
             <Link
               key={link.name}

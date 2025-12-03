@@ -19,18 +19,18 @@ const companies = [
 const HomePage = () => {
   return (
     <div className='w-full h-full relative'>
-      <div className='grid grid-cols-1 lg:grid-cols-12 gap-6 h-full overflow-y-auto lg:overflow-hidden' >
-        <section className='order-2 lg:order-1 lg:col-span-6 w-full h-full flex items-center justify-center pb-10 lg:pb-20'>
+      <div className='grid grid-cols-1 lg:grid-cols-12 gap-6 h-full overflow-y-auto xl:overflow-hidden' >
+        <section className='order-2 xl:order-1 lg:col-span-6 w-full h-full flex items-center justify-center pb-10 xl:pb-20'>
           <div className='flex items-center gap-2 relative'>
-            <Image src='/assets/arrow-big.svg' width={300} height={300} alt='arrow' className="w-[200px] lg:w-[300px] hidden lg:block" />
-            <Image src='/assets/user.png' width={300} height={300} alt='user' className="w-[200px] lg:w-[300px]  lg:static top-10 left-10 lg:top-auto lg:left-auto opacity-80 lg:opacity-100" />
+            <Image src='/assets/arrow-big.svg' width={300} height={300} alt='arrow' className="w-[200px] xl:w-[300px] hidden xl:block" />
+            <Image src='/assets/user.png' width={300} height={300} alt='user' className="w-[200px] xl:w-[300px]  xl:static top-10 left-10 xl:top-auto xl:left-auto opacity-80 xl:opacity-100" />
           </div>
         </section>
-        <section className='order-1 lg:order-2 lg:col-span-6 w-full flex items-center justify-center pt-10 lg:pt-0 pb-2 lg:pb-20 px-1'>
-          <div className='w-full flex flex-col items-start px-4 lg:px-0'>
-            <p className='text-sm lg:text-base text-foreground'>Hi all. I am</p>
-            <h1 className='text-4xl lg:text-5xl text-gradient'>Moazzam Arif</h1>
-            <h6 className='text-xl lg:text-2xl text-foreground'>
+        <section className='order-1 xl:order-2 lg:col-span-6 w-full flex items-center justify-center pt-10 xl:pt-0 pb-2 xl:pb-20 px-1 lg:px-4'>
+          <div className='w-full flex flex-col items-start px-4 xl:px-0'>
+            <p className='text-sm xl:text-base text-foreground'>Hi all. I am</p>
+            <h1 className='text-4xl xl:text-5xl text-gradient'>Moazzam Arif</h1>
+            <h6 className='text-xl xl:text-2xl text-foreground'>
               {">"} Senior Smart Contract Auditor
             </h6>
             <div className='mt-8'>
@@ -47,7 +47,7 @@ const HomePage = () => {
               </div>
             </div>
 
-            <div className='mt-8 hidden lg:block'>
+            <div className='mt-8 hidden xl:block'>
               <p className='text-base text-foreground'>
                 // find my profile on Github:
               </p>
