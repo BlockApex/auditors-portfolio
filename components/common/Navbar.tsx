@@ -2,8 +2,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { Menu, X as XIcon } from "lucide-react";
+import { useState } from "react";
+
 const Navbar = () => {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const links = [
     { name: "_hello", path: "/" },
@@ -13,31 +17,69 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full flex items-center justify-between border-b border-foreground/50">
-      <section className="flex items-center">
+    <nav className="w-full flex items-center justify-between border-b border-foreground/50 relative z-50">
+      <section className="flex items-center w-full lg:w-auto justify-between lg:justify-start">
         <p className="text-foreground text-base border-r border-foreground/50 px-6 py-2 min-w-[250px]">
           moazzam-arif
         </p>
 
-        {links.map((link) => (
-          <Link
-            key={link.name}
-            href={link.path}
-            className={`text-foreground text-base border-r border-foreground/50 px-6 py-2 ${
-              pathname === link.path ? "active_link" : ""
-            }`}
-          >
-            {link.name}
-          </Link>
-        ))}
+        {/* Mobile Menu Button */}
+        <button
+          className="lg:hidden px-6 py-2 text-foreground"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <XIcon /> : <Menu />}
+        </button>
+
+        {/* Desktop Links */}
+        <div className="hidden lg:flex">
+          {links.map((link) => (
+            <Link
+              key={link.name}
+              href={link.path}
+              className={`text-foreground text-base border-r border-foreground/50 px-6 py-2 ${pathname === link.path ? "active_link" : ""
+                }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
       </section>
 
-      <section className="flex items-center border-s border-foreground/50 px-6 py-2 gap-3">
+      {/* Desktop Contact Link */}
+      <section className="hidden lg:flex items-center border-s border-foreground/50 px-6 py-2 gap-3">
         <span className="w-4 h-4 rounded-full bg-[#05DF72]/20 flex items-center justify-center">
           <span className="w-3 h-3 rounded-full bg-[#05DF72] block"></span>
         </span>
         <Link href='/contact' className="text-foreground text-base">_contact-me</Link>
       </section>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="absolute top-full left-0 w-full bg-dark border-b border-foreground/50 flex flex-col lg:hidden">
+          {links.map((link) => (
+            <Link
+              key={link.name}
+              href={link.path}
+              onClick={() => setIsMenuOpen(false)}
+              className={`text-foreground text-base border-b border-foreground/50 px-6 py-4 ${pathname === link.path ? "active_link" : ""
+                }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <Link
+            href='/contact'
+            onClick={() => setIsMenuOpen(false)}
+            className="text-foreground text-base px-6 py-4 flex items-center gap-3"
+          >
+            <span className="w-4 h-4 rounded-full bg-[#05DF72]/20 flex items-center justify-center">
+              <span className="w-3 h-3 rounded-full bg-[#05DF72] block"></span>
+            </span>
+            _contact-me
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };
