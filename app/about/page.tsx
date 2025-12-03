@@ -11,14 +11,14 @@ const AboutPage = () => {
     return (
         <div className="flex flex-col xl:flex-row h-full w-full overflow-y-auto xl:overflow-hidden">
             {/* Icon Strip */}
-            <aside className="w-14 border-r border-foreground/50 hidden xl:flex flex-col items-center py-4 gap-6 shrink-0">
+            {/* <aside className="w-14 border-r border-foreground/50 hidden xl:flex flex-col items-center py-4 gap-6 shrink-0">
                 <div className="text-foreground cursor-pointer transition-colors">
                     <Image src='/assets/icons/play.svg' alt="play" width={25} height={25} />
                 </div>
                 <div className="text-foreground cursor-pointer transition-colors">
                     <Image src='/assets/icons/dash.svg' alt="dash" width={25} height={25} />
                 </div>
-            </aside>
+            </aside> */}
 
             {/* Navigation Sidebar */}
             <Sidebar />
