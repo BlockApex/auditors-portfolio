@@ -6,7 +6,11 @@ import StatsCards from "@/components/vulnerabilities/StatsCards";
 import VulnerabilityChart from "@/components/vulnerabilities/VulnerabilityChart";
 import VulnerabilityList from "@/components/vulnerabilities/VulnerabilityList";
 
+import { useAuditorStore } from "@/store/useAuditorStore";
+
 const VulnerabilitiesPage = () => {
+  const { findingsData } = useAuditorStore();
+
   return (
     <div className="flex flex-col xl:flex-row h-full w-full overflow-y-auto xl:overflow-hidden overflow-x-hidden">
       {/* Sidebar */}
@@ -33,7 +37,7 @@ const VulnerabilitiesPage = () => {
                 <h3 className="text-foreground text-base">// Vulnerability Directory:</h3>
                 <div className="flex items-center gap-2 text-base text-success">
                   <span>↗</span>
-                  <span>320 Total</span>
+                  <span>{findingsData?.count || 0} Total</span>
                 </div>
               </div>
               <div className="bg-dark-50/10 border border-foreground/10 rounded-lg p-4">

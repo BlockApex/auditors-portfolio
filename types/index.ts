@@ -45,3 +45,40 @@ export interface Auditor {
     ecosystem: Ecosystem[];
     creation_date: string;
 }
+
+export interface Report {
+    logo: string;
+    title: string;
+    report_id: string;
+}
+
+export interface Finding {
+    title: string;
+    severity: "Critical" | "High" | "Medium" | "Low" | "Info";
+    status: string;
+    report: Report;
+}
+
+export interface FindingsStats {
+    num_reports: number;
+    num_findings: number;
+    total_market_cap: number;
+    success_rate: number;
+    findings_by_severity: {
+        Critical?: number;
+        High?: number;
+        Medium?: number;
+        Low?: number;
+        Info?: number;
+    };
+}
+
+export interface FindingsResponse {
+    auditor: {
+        subdomain: string;
+        name: string;
+    };
+    stats: FindingsStats;
+    findings: Finding[];
+    count: number;
+}
