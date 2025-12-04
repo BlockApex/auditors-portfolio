@@ -1,33 +1,42 @@
 import React, { useState } from "react";
 import Widgets from "./Widgets";
+import { useAuditorStore } from "@/store/useAuditorStore";
 
 const CodeEditor = () => {
     const [activeTab, setActiveTab] = useState<'about' | 'certificates'>('about');
 
-    const codeLines = [
-        "/**",
-        " * About me",
-        " * Senior Smart Contract Auditor with 6+ years of",
-        " * experience specializing in blockchain security",
-        " * across multiple ecosystems. Deep expertise in",
-        " * identifying critical vulnerabilities and",
-        " * securing decentralized protocols.",
-        " */",
-        "",
-        "* My approach combines advanced static analysis, manual code",
-        "  review, and formal verification to ensure comprehensive",
-        "  security coverage. I've contributed to securing over $2.5B+ in",
-        "  TVL across 150+ audits.",
-        "",
-        "Specializing in DeFi protocols, cross-chain bridges, L1/L2",
-        "solutions, and zero-knowledge systems. Proficient in Solidity,",
-        "Rust, Cairo, and Move with extensive experience using industry-",
-        "leading tools like Slither, Foundry, Echidna, and Certora.",
-        "",
-        "* 320+ Vulnerabilities",
-        "* 150+ Audits",
-        "* 12 Blockchains",
-    ];
+    const { data: auditor, isLoading, error } = useAuditorStore();
+
+    if (error) {
+        return (
+            <div className="flex flex-col h-[500px] xl:h-full w-full xl:border-r border-foreground/50 items-center justify-center text-red-400 p-4 text-center">
+                <p>Failed to load profile data.</p>
+            </div>
+        );
+    }
+
+    if (isLoading || !auditor) {
+        return (
+            <div className="flex flex-col h-[500px] xl:h-full w-full xl:border-r border-foreground/50">
+                <div className="flex border-b border-foreground/50">
+                    <div className="px-4 py-2 border-r border-foreground/50 text-sm flex items-center text-white bg-white/5">
+                        <span>Loading...</span>
+                    </div>
+                </div>
+                <div className="flex-1 p-4 space-y-2">
+                    {Array(15).fill(0).map((_, i) => (
+                        <div key={i} className="flex gap-4">
+                            <div className="w-8 h-4 bg-white/5 rounded animate-pulse"></div>
+                            <div className="flex-1 h-4 bg-white/5 rounded animate-pulse" style={{ width: `${(i % 3 + 2) * 20}%` }}></div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        )
+    }
+
+    const codeContent = auditor.about;
+    const codeLines = codeContent.split('\n');
 
     return (
         <div className="flex flex-col h-[500px] xl:h-full w-full xl:border-r border-foreground/50">
