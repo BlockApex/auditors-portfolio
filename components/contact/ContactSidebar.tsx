@@ -3,15 +3,19 @@
 import { ChevronDown, ChevronRight, Mail, Phone, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
+import { useAuditorStore } from "@/store/useAuditorStore";
+
 const ContactSidebar = () => {
     const [isContactsOpen, setIsContactsOpen] = useState(true);
     const [isFindMeOpen, setIsFindMeOpen] = useState(true);
+    const { data: auditor } = useAuditorStore();
 
+    // Combine all social links
     const socialLinks = [
-        { name: "YouTube", url: "https://youtube.com" },
-        { name: "dev.to", url: "https://dev.to" },
-        { name: "Instagram", url: "https://instagram.com" },
-        { name: "Twitch", url: "https://twitch.tv" },
+        ...(auditor?.social_links?.map(link => ({ name: link.name, url: link.link })) || []),
+        ...(auditor?.twitter_link ? [{ name: "Twitter", url: auditor.twitter_link }] : []),
+        ...(auditor?.linkedin_link ? [{ name: "LinkedIn", url: auditor.linkedin_link }] : []),
+        ...(auditor?.github_link ? [{ name: "GitHub", url: auditor.github_link }] : []),
     ];
 
     return (
@@ -34,11 +38,19 @@ const ContactSidebar = () => {
                     <div className="px-4 py-2 space-y-2">
                         <div className="flex items-center text-foreground/80 hover:text-white transition-colors text-xs break-all">
                             <Mail size={14} className="mr-2 shrink-0" />
-                            <a href="mailto:user@gmail.com" className="ml-2">user@gmail.com</a>
+                            {auditor?.email ? (
+                                <a href={`mailto:${auditor.email}`} className="ml-2">{auditor.email}</a>
+                            ) : (
+                                <div className="h-3 w-32 bg-white/10 rounded animate-pulse ml-2"></div>
+                            )}
                         </div>
                         <div className="flex items-center text-foreground/80 hover:text-white transition-colors text-xs">
                             <Phone size={14} className="mr-2 shrink-0" />
-                            <a href="tel:+3598246359" className="ml-2">+3598246359</a>
+                            {auditor?.phone_number ? (
+                                <a href={`tel:${auditor.phone_number}`} className="ml-2">{auditor.phone_number}</a>
+                            ) : (
+                                <div className="h-3 w-24 bg-white/10 rounded animate-pulse ml-2"></div>
+                            )}
                         </div>
                     </div>
                 )}
@@ -60,9 +72,9 @@ const ContactSidebar = () => {
 
                 {isFindMeOpen && (
                     <div className="px-4 py-2 space-y-2">
-                        {socialLinks.map((link) => (
+                        {socialLinks.length > 0 ? socialLinks.map((link, i) => (
                             <a
-                                key={link.name}
+                                key={i}
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -71,7 +83,15 @@ const ContactSidebar = () => {
                                 <ExternalLink size={14} className="mr-2 shrink-0 group-hover:text-secondary" />
                                 <span>{link.name}</span>
                             </a>
-                        ))}
+                        )) : (
+                            // Loading state
+                            [1, 2, 3].map((i) => (
+                                <div key={i} className="flex items-center text-foreground/80 text-xs group">
+                                    <div className="w-3 h-3 bg-white/10 rounded animate-pulse mr-2"></div>
+                                    <div className="h-3 w-20 bg-white/10 rounded animate-pulse"></div>
+                                </div>
+                            ))
+                        )}
                     </div>
                 )}
             </div>

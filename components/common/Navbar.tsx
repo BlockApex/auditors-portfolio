@@ -5,9 +5,12 @@ import { usePathname } from "next/navigation";
 import { Menu, X as XIcon } from "lucide-react";
 import { useState } from "react";
 
+import { useAuditorStore } from "@/store/useAuditorStore";
+
 const Navbar = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: auditor } = useAuditorStore();
 
   const links = [
     { name: "_hello", path: "/" },
@@ -19,9 +22,13 @@ const Navbar = () => {
   return (
     <nav className="w-full flex items-center justify-between border-b border-foreground/50 relative z-50">
       <section className="flex items-center w-full xl:w-auto justify-between xl:justify-start">
-        <p className="text-foreground text-base border-r border-foreground/50 px-6 py-2 min-w-[250px]">
-          moazzam-arif
-        </p>
+        <div className="text-foreground text-base border-r border-foreground/50 px-6 py-2 min-w-[250px]">
+          {auditor?.name ? (
+            auditor.name.toLowerCase().replace(/\s+/g, '-')
+          ) : (
+            <div className="h-4 w-32 bg-white/10 rounded animate-pulse"></div>
+          )}
+        </div>
 
         {/* Mobile Menu Button */}
         <button
