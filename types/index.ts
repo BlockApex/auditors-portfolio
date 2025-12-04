@@ -50,6 +50,19 @@ export interface Report {
     logo: string;
     title: string;
     report_id: string;
+    tags?: string;
+    platforms?: string;
+    languages?: string;
+    executive_summary?: string;
+}
+
+export interface ReportsResponse {
+    auditor: {
+        subdomain: string;
+        name: string;
+    };
+    reports: Report[];
+    count: number;
 }
 
 export interface Finding {

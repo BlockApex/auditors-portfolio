@@ -4,7 +4,12 @@ import { ChevronDown, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 
-const ProjectSidebar = () => {
+interface ProjectSidebarProps {
+  filters: Record<string, boolean>;
+  toggleFilter: (key: string) => void;
+}
+
+const ProjectSidebar = ({ filters, toggleFilter }: ProjectSidebarProps) => {
   const [isOpen, setIsOpen] = useState(true);
 
   // Initialize filters dynamically from blockchains
@@ -16,14 +21,6 @@ const ProjectSidebar = () => {
     { name: "Cosmos", icon: "/assets/chains/cosmos.svg" },
     { name: "Solana", icon: "/assets/chains/solana.svg" },
   ];
-
-  const [filters, setFilters] = useState(
-    Object.fromEntries(blockchains.map((b) => [b.name, true]))
-  );
-
-  const toggleFilter = (key: keyof typeof filters) => {
-    setFilters((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
 
   return (
     <aside className="w-full xl:w-64 border-b xl:border-b-0 xl:border-r border-foreground/50 flex flex-col h-auto xl:h-full shrink-0">
@@ -48,16 +45,16 @@ const ProjectSidebar = () => {
               <div
                 key={chain.name}
                 className="flex items-center space-x-3 cursor-pointer group"
-                onClick={() => toggleFilter(chain.name as keyof typeof filters)}
+                onClick={() => toggleFilter(chain.name)}
               >
                 {/* Checkbox */}
                 <div
-                  className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${filters[chain.name as keyof typeof filters]
-                      ? "bg-foreground/20 border-foreground"
-                      : "border-foreground/50"
+                  className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${filters[chain.name]
+                    ? "bg-foreground/20 border-foreground"
+                    : "border-foreground/50"
                     }`}
                 >
-                  {filters[chain.name as keyof typeof filters] && (
+                  {filters[chain.name] && (
                     <span className="text-xs text-white">✓</span>
                   )}
                 </div>

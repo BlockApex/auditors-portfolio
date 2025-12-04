@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import axios from 'axios';
-import { Auditor, FindingsResponse } from '@/types';
+import { Auditor, FindingsResponse, ReportsResponse } from '@/types';
 import { BASE_URL } from '@/config';
 
 interface AuditorState {
@@ -13,6 +13,11 @@ interface AuditorState {
     isLoadingFindings: boolean;
     findingsError: string | null;
     fetchFindings: (subdomain: string) => Promise<void>;
+
+    reportsData: ReportsResponse | null;
+    isLoadingReports: boolean;
+    reportsError: string | null;
+    fetchReports: (subdomain: string) => Promise<void>;
 }
 
 export const useAuditorStore = create<AuditorState>((set) => ({
@@ -45,6 +50,22 @@ export const useAuditorStore = create<AuditorState>((set) => ({
         } catch (error) {
             console.error('Failed to fetch findings data:', error);
             set({ findingsError: 'Failed to fetch findings data', isLoadingFindings: false });
+        }
+    },
+
+    reportsData: null,
+    isLoadingReports: false,
+    reportsError: null,
+    fetchReports: async (subdomain: string) => {
+        set({ isLoadingReports: true, reportsError: null });
+        try {
+            const response = await axios.get(`${BASE_URL}/auditor/reports`, {
+                params: { subdomain },
+            });
+            set({ reportsData: response.data, isLoadingReports: false });
+        } catch (error) {
+            console.error('Failed to fetch reports data:', error);
+            set({ reportsError: 'Failed to fetch reports data', isLoadingReports: false });
         }
     },
 }));

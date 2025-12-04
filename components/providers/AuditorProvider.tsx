@@ -4,12 +4,13 @@ import { useEffect } from "react";
 import { useAuditorStore } from "@/store/useAuditorStore";
 
 const AuditorProvider = ({ children }: { children: React.ReactNode }) => {
-    const { fetchAuditor, fetchFindings } = useAuditorStore();
+    const { fetchAuditor, fetchFindings, fetchReports } = useAuditorStore();
 
     useEffect(() => {
         fetchAuditor('moazzam-arif');
         fetchFindings('moazzam-arif');
-    }, [fetchAuditor, fetchFindings]);
+        fetchReports('moazzam-arif');
+    }, [fetchAuditor, fetchFindings, fetchReports]);
 
     return <>{children}</>;
 };

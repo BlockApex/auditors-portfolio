@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 interface ProjectCardProps {
-    id: number;
+    id: string | number;
     title: string;
     subtitle: string;
     description: string;
@@ -37,12 +37,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 />
                 {/* Overlay Icons (Eth/Link) - Mocked */}
                 <div className="absolute top-2 right-2 flex gap-1 z-10">
-                    <div className="w-6 h-8 bg-black/50 rounded-lg flex items-center justify-center border border-white/10 backdrop-blur-sm">
+                    {/* <div className="w-6 h-8 bg-black/50 rounded-lg flex items-center justify-center border border-white/10 backdrop-blur-sm">
                         <Image src='/assets/eth.svg' alt="eth" width={15} height={15} />
                     </div>
                     <div className="w-6 h-8 bg-black/50 rounded-lg flex items-center justify-center border border-white/10 backdrop-blur-sm">
                         <Image src='/assets/eth.svg' alt="eth" width={15} height={15} />
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Tags Overlay */}
@@ -62,14 +62,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
                 <div className="space-y-1 z-0">
                     <h3 className="text-foreground text-sm">::: {subtitle} :::</h3>
-                    <p className="text-foreground text-sm leading-relaxed">
+                    <p className="text-foreground text-sm leading-relaxed line-clamp-2 text-ellipsis overflow-hidden">
                         [{description}]
                     </p>
                 </div>
 
-                <button className="mt-auto self-start px-4 py-1.5 bg-foreground/50 text-white text-xs rounded transition-colors border border-foreground/10 z-0">
+                <a
+                    href={`https://reports.blockapex.io/report?id=${id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto self-start px-4 py-1.5 bg-foreground/50 text-white text-xs rounded transition-colors border border-foreground/10 z-0 hover:bg-foreground/70"
+                >
                     view-report
-                </button>
+                </a>
             </div>
         </div>
     );
