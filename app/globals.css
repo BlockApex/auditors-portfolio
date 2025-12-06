@@ -3,7 +3,7 @@
 /* 🌈 Global design tokens (CSS variables) */
 :root {
   /* 🎨 Color palette */
-  --primary: #615FFF;
+  --primary: #615fff;
   --secondary: #f6754f;
   --success: #10b981;
   --danger: #ef4444;
@@ -166,3 +166,16 @@ button {
     linear-gradient(180deg, #0b0b0b 58.17%, #00152b 100%);
   border-bottom: 1px solid #007dff;
 }
+
+.orbit {
+  opacity: 0.2;
+  background: url('/assets/orbit.gif') 50% / cover no-repeat;
+  mix-blend-mode: screen;
+  z-index: 9999;
+
+  /* Fade the edges */
+  -webkit-mask-image: radial-gradient(circle, white 40%, transparent 100%);
+  mask-image: radial-gradient(circle, white 40%, transparent 100%);
+}
+
+

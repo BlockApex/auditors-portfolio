@@ -4,6 +4,7 @@ import { Github, Linkedin, X } from 'lucide-react'
 import React from 'react'
 
 import { useAuditorStore } from "@/store/useAuditorStore";
+import Image from 'next/image';
 
 const Footer = () => {
     const { data: auditor } = useAuditorStore();
@@ -18,7 +19,7 @@ const Footer = () => {
                     <div className='border-l xl:border-l-0 border-r border-foreground/50 px-4 py-2'>
                         {auditor?.twitter_link ? (
                             <a href={auditor.twitter_link} target="_blank" rel="noopener noreferrer">
-                                <X className='text-foreground text-base cursor-pointer hover:text-white transition-colors' />
+                                <Image src='/assets/x.svg' alt='x.com' width={25} height={25} />
                             </a>
                         ) : (
                             <div className="w-4 h-4 bg-white/10 rounded animate-pulse"></div>
@@ -27,7 +28,7 @@ const Footer = () => {
                     <div className='border-r border-foreground/50 px-4 py-2 '>
                         {auditor?.linkedin_link ? (
                             <a href={auditor.linkedin_link} target="_blank" rel="noopener noreferrer">
-                                <Linkedin className='text-foreground text-base cursor-pointer hover:text-white transition-colors' />
+                                <Image src='/assets/linkedin.svg' alt='linkedin.com' width={25} height={25} />
                             </a>
                         ) : (
                             <div className="w-4 h-4 bg-white/10 rounded animate-pulse"></div>
@@ -41,7 +42,7 @@ const Footer = () => {
                         <>
                             <p className='text-foreground text-base'>@{auditor.github_username}</p>
                             <a href={auditor.github_link || "#"} target="_blank" rel="noopener noreferrer">
-                                <Github className='text-foreground text-base cursor-pointer hover:text-white transition-colors' />
+                                <Image src='/assets/github.svg' alt='github.com' width={25} height={25} />
                             </a>
                         </>
                     ) : (

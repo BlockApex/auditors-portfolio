@@ -7,7 +7,7 @@ const AuditorProvider = ({ children }: { children: React.ReactNode }) => {
     const { fetchAuditor, fetchFindings, fetchReports } = useAuditorStore();
 
     useEffect(() => {
-        let subdomain = 'moazzam-arif';
+        let subdomain = 'gul-hameed';
 
         if (process.env.NODE_ENV === 'production' && typeof window !== 'undefined') {
             const hostname = window.location.hostname;

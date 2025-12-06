@@ -59,6 +59,7 @@ const HomePage = () => {
 
   return (
     <div className='w-full h-full relative'>
+
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-6 h-full overflow-y-auto xl:overflow-hidden' >
         <section className='order-2 xl:order-1 lg:col-span-6 w-full h-full flex items-center justify-center pb-10 xl:pb-20'>
           <div className='flex items-center gap-2 relative'>
@@ -68,32 +69,43 @@ const HomePage = () => {
               width={300}
               height={300}
               alt='user'
-              className="w-[200px] xl:w-[300px] xl:static top-10 left-10 xl:top-auto xl:left-auto opacity-80 xl:opacity-100 object-contain"
+              className="w-[300px] xl:w-[300px] xl:static top-10 left-10 xl:top-auto xl:left-auto opacity-80 xl:opacity-100 object-contain"
             />
           </div>
         </section>
-        <section className='order-1 xl:order-2 lg:col-span-6 w-full flex items-center justify-center pt-10 xl:pt-0 pb-2 xl:pb-20 px-1 lg:px-4'>
+        <section className='order-1 xl:order-2 lg:col-span-6 w-full flex items-center justify-center pt-10 xl:pt-0 pb-2 xl:pb-20 px-2 lg:px-4'>
           <div className='w-full flex flex-col items-start px-4 xl:px-0'>
             <p className='text-sm xl:text-base text-foreground'>Hi all. I am</p>
             <h1 className='text-4xl xl:text-5xl text-gradient'>{auditor.name}</h1>
             <h6 className='text-xl xl:text-2xl text-foreground'>
               {">"} {auditor.position}
             </h6>
-            <div className='mt-8'>
-              <p className='text-base text-foreground'>Worked with</p>
-              <div className='flex items-center gap-4 mt-2 flex-wrap'>
+            <div className='mt-4 w-full block lg:hidden'>
+              <div className='mb-4 py-2'>
+                <p className='text-base text-foreground'>[ Associated Organizations ]</p>
+              </div>
+              <div className='w-full flex flex-col'>
                 {auditor.worked_with?.map((c, i) => {
                   return (
-                    <div className='bg-dark rounded-xl px-3 py-1 flex items-center gap-2' key={i}>
-                      <Image src={c.logo} alt={c.name} width={20} height={20} className="object-contain" />
-                      <p className='text-sm text-white'>{c.name}</p>
+                    <div
+                      key={i}
+                      className="w-full h-[60px] px-4 flex items-center gap-2 border border-foreground/50"
+                    >
+                      <Image
+                        src={c.logo}
+                        alt={c.name}
+                        width={20}
+                        height={20}
+                        className="object-contain ml-3"
+                      />
+
+                      <p className="text-sm text-white whitespace-nowrap">{c.name}</p>
                     </div>
                   )
                 })}
               </div>
             </div>
-
-            <div className='mt-8 hidden xl:block'>
+            <div className='mt-4 lg:mt-8'>
               <p className='text-base text-foreground'>
                 // find my profile on Github:
               </p>
@@ -104,6 +116,38 @@ const HomePage = () => {
           </div>
         </section>
       </div>
+      <div className='hidden lg:block absolute bottom-0 right-0 border-s border-t   border-foreground/50 min-w-[400px] bg-foreground/10 backdrop-blur-md'>
+        <div className='mb-4 p-4'>
+          <p className='text-base text-foreground'>[ Associated Organizations ]</p>
+        </div>
+        <div className='w-full flex items-center justify-between mt-2 flex-wrap'>
+          {auditor.worked_with?.map((c, i) => {
+            return (
+              <div
+                key={i}
+                className="
+            min-w-[150px] h-[60px]
+            px-4
+            flex items-center gap-2
+            border border-foreground/50
+          "
+              >
+                <Image
+                  src={c.logo}
+                  alt={c.name}
+                  width={20}
+                  height={20}
+                  className="object-contain ml-3"
+                />
+
+                <p className="text-sm text-white whitespace-nowrap">{c.name}</p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+<div className="absolute bottom-0 right-0 z-10 orbit w-[500px] h-[500px]" />
+
     </div>
   )
 }

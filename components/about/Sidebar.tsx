@@ -4,12 +4,13 @@ import { ChevronDown, ChevronRight, Folder, Mail, Phone, User } from "lucide-rea
 import { useState } from "react";
 
 import { useAuditorStore } from "@/store/useAuditorStore";
+import Image from "next/image";
 
 const Sidebar = () => {
   const [isPersonalInfoOpen, setIsPersonalInfoOpen] = useState(true);
   const [isContactsOpen, setIsContactsOpen] = useState(true);
   const { data: auditor } = useAuditorStore();
-
+  let telegram = auditor && auditor.social_links.filter((social) => social.name === "Telegram")
   return (
     <aside className="w-full xl:w-64 border-b xl:border-b-0 xl:border-r border-foreground/50 flex flex-col h-auto xl:h-full shrink-0">
       {/* Personal Info Section */}
@@ -70,6 +71,27 @@ const Sidebar = () => {
                 <div className="h-3 w-24 bg-white/10 rounded animate-pulse ml-2"></div>
               )}
             </div>
+            {telegram && telegram.length > 0 ? (
+              <div className="flex items-center text-foreground/80 hover:text-white transition-colors text-xs">
+                <Image src="/assets/telegram.svg" alt="telegram" width={15} height={15} />
+
+                {/* Show link */}
+                <a
+                  href={telegram[0].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-2 break-all"
+                >
+                  {telegram[0].link}
+                </a>
+              </div>
+            ) : (
+              // Loading or not found
+              <div className="flex items-center text-foreground/80 transition-colors text-xs">
+                <Image src="/assets/telegram.svg" alt="telegram" width={15} height={15} />
+                <div className="h-3 w-24 bg-white/10 rounded animate-pulse ml-2"></div>
+              </div>
+            )}
           </div>
         )}
       </div>

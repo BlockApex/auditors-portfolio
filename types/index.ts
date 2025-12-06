@@ -62,6 +62,7 @@ export interface ReportsResponse {
         name: string;
     };
     reports: Report[];
+    featured_reports:Report[];
     count: number;
 }
 

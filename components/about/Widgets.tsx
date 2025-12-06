@@ -59,15 +59,14 @@ const Widgets = () => {
 
     return (
         <div className="h-auto xl:h-full overflow-y-auto p-6 space-y-8 hide-scrollbar">
-
             {/* Certifications */}
             <section>
                 <h3 className="text-foreground text-sm mb-4">\\ Certifications</h3>
                 <div className="flex flex-wrap gap-4">
                     {auditor.certifications?.map((cert, i) => {
                         return (
-                            <a key={i} href={cert.link} target="_blank" rel="noopener noreferrer" title={cert.name}>
-                                <Image src={cert.logo} alt={cert.name} width={50} height={50} className="rounded-md object-contain bg-white/5" />
+                            <a key={i} href={cert.link} target="_blank" rel="noopener noreferrer" title={cert.name} className="w-20 height-[150px] rounded-lg bg-[##1F1F1F] border border-foreground/50 flex items-center justify-center p-2">
+                                <Image src={cert.logo} alt={cert.name} width={50} height={50} className="object-contain" />
                             </a>
                         )
                     })}
@@ -93,7 +92,7 @@ const Widgets = () => {
                     {auditor.interests?.map((interest, i) => (
                         <div key={i} className="interest-border flex items-center justify-between px-2 py-2">
                             <span className="text-sm text-white">{interest.value}</span>
-                            <Image src={interest.logo} alt={interest.value} width={20} height={20} className="object-contain" />
+                            {interest.logo ? <Image src={interest.logo} alt={interest.value} width={20} height={20} className="object-contain" /> : ""}
                         </div>
                     ))}
                 </div>
@@ -104,9 +103,15 @@ const Widgets = () => {
                 <h3 className="text-foreground text-sm mb-4">\\ Ecosystem</h3>
                 <div className="space-y-4">
                     {auditor.ecosystem?.map((item, i) => {
-                        // Determine color based on index or name if needed, or cycle through colors
-                        const colors = ["bg-warning", "bg-info", "bg-success", "bg-secondary"];
-                        const colorClass = colors[i % colors.length];
+                        // Custom gradient backgrounds
+                        const gradients = [
+                            "linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #786D4E 100%)",
+                            "linear-gradient(90deg, rgba(6, 50, 133, 0.24) 0%, #0A58EB 100%)",
+                            "linear-gradient(90deg, rgba(102, 123, 64, 0.04) 0%, #BBE176 100%)",
+                            "linear-gradient(90deg, rgba(40, 23, 18, 0.04) 0%, #8E5240 100%)"
+                        ];
+
+                        const gradient = gradients[i % gradients.length];
 
                         return (
                             <div key={i} className="space-y-1">
@@ -114,14 +119,22 @@ const Widgets = () => {
                                     <span>{item.name}</span>
                                     <span>{item.proficiency}%</span>
                                 </div>
+
                                 <div className="w-full h-1 bg-dark-50 rounded-full overflow-hidden">
-                                    <div className={`h-full ${colorClass} w-[${item.proficiency}%]`} style={{ width: `${item.proficiency}%` }}></div>
+                                    <div
+                                        className="h-full rounded-full"
+                                        style={{
+                                            width: `${item.proficiency}%`,
+                                            background: gradient
+                                        }}
+                                    ></div>
                                 </div>
                             </div>
-                        )
+                        );
                     })}
                 </div>
             </section>
+
 
         </div>
     );
