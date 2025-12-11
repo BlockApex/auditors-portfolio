@@ -11,6 +11,8 @@ const FeaturedClients = () => {
     return null;
   }
 
+  console.log(reportsData, "reportsData")
+
   return (
     <div className="w-full border-b border-foreground/50">
       <div className="flex overflow-x-auto hide-scrollbar">
@@ -26,17 +28,19 @@ const FeaturedClients = () => {
               href={report.report_id}
               target="_blank"
               key={i}
-              className={`flex-1 flex items-center justify-center cursor-pointer px-6 py-0 ${
-                i !== reportsData.featured_reports.length - 1 ? "border-r border-foreground/50" : ""
-              }`}
+              className={`flex-1 flex items-center justify-center cursor-pointer px-6 py-0 ${i !== reportsData.featured_reports.length - 1 ? "border-r border-foreground/50" : ""
+                }`}
             >
-              <Image
-                src={report.logo} // use logo from each object
-                alt={report.title || "Client"} // fallback if name exists
-                width={100}
-                height={40}
-                className="object-contain opacity-70 hover:opacity-100 transition-opacity min-w-[70px] md:min-w-auto"
-              />
+              {report.logo ? (
+                <Image
+                  src={report.logo} // use logo from each object
+                  alt={report.title || "Client"} // fallback if name exists
+                  width={70}
+                  height={50}
+                  className="object-contain opacity-70 hover:opacity-100 transition-opacity min-w-[70px] md:min-w-auto"
+                />
+              ) : ""}
+
             </Link>
           ))}
         </div>

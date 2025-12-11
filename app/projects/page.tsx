@@ -12,7 +12,7 @@ const ProjectsPage = () => {
   const { reportsData, isLoadingReports, reportsError } = useAuditorStore();
 
   const blockchains = [
-    "Ton", "Ethereum", "Near", "BinanceSmartChain", "Cosmos", "Solana"
+    "Ton", "Ethereum", "Near", "BinanceSmartChain", "Cosmos", "Solana", "Stellar"
   ];
 
   const [filters, setFilters] = useState<Record<string, boolean>>(

@@ -14,12 +14,13 @@ const ProjectSidebar = ({ filters, toggleFilter }: ProjectSidebarProps) => {
 
   // Initialize filters dynamically from blockchains
   const blockchains = [
-    { name: "Ton", icon: "/assets/chains/ton.svg" },
+    { name: "Ton", icon: "/assets/chains/_ton.svg" },
     { name: "Ethereum", icon: "/assets/chains/ethereum.svg" },
     { name: "Near", icon: "/assets/chains/near.svg" },
     { name: "BinanceSmartChain", icon: "/assets/chains/bnb.svg" },
     { name: "Cosmos", icon: "/assets/chains/cosmos.svg" },
     { name: "Solana", icon: "/assets/chains/solana.svg" },
+    { name: "Stellar", icon: "/assets/chains/stellar.png" },
   ];
 
   return (
